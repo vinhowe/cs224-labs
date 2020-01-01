@@ -110,7 +110,7 @@ and the current directory will be displayed. By default the terminal will open i
 
 ---
 
-  * **Lab Question 1**: What is the path to your home directory on a lab machine?  To answer this, use the `pwd` command in the terminal window after you first (remotely) log in. 
+  * **Lab Question 1 (5 points)**: What is the path to your home directory on a lab machine?  To answer this, use the `pwd` command in the terminal window after you first (remotely) log in. 
 
 ---
 
@@ -169,7 +169,7 @@ cd ..
 
 ---
 
-  * **Lab Question 2**: What is the full path to your new directory? (hint: use `pwd` after you have moved into the directory)
+  * **Lab Question 2 (5 points)**: What is the full path to your new directory? (hint: use `pwd` after you have moved into the directory)
 
 ---
 
@@ -297,14 +297,14 @@ The following questions and tasks concern the `Lab0` directory and its contents 
 
 ---
 
- * **Lab Question 3**: How many subdirectories are in the `f1` directory?  What are their names?
- * **Lab Question 4**: How many files are in the `f1` directory? What are their names?
- * **Lab Question 5**: How many subdirectories are in the `f2` directory (counting all subdirectories of subdirectories etc. as well)? What are their names?
- * **Lab Question 6**: How many files are in the `f2` directory (and its sub(sub)directories? Give the name and path to each one. 
- * **Lab Question 7**: Give the command(s) you would use to copy `Goldilocks.txt` into the `beds` directory, assuming you start in the `f2` directory.
- * **Lab Question 8**: Give the command(s) you would use to delete the `JustRight.txt` file from the `chairs` subdirectory (since Goldilocks broke it), assuming you start from the `f2` directory.
- * **Lab Question 9**: Our hero Theseus is looking for the Minotaur monster somewhere in the `f3` directory's maze of subdirectories.  Find the file `Minotaur.txt` and give the `mv` command(s) that would move the `Theseus.txt` file into the same directory as `Minotaur.txt` so that Theseus can save the day. (assum that you start in the `f3` directory)
- * **Lab Question 10**: What is the full path to the directory where Theseus and the Minotaur now are?
+ * **Lab Question 3 (5 points)**: How many subdirectories are in the `f1` directory?  What are their names?
+ * **Lab Question 4 (10 points)**: How many files are in the `f1` directory? What are their names?
+ * **Lab Question 5 (10 points)**: How many subdirectories are in the `f2` directory (counting all subdirectories of subdirectories etc. as well)? What are their names?
+ * **Lab Question 6 (10 points)**: How many files are in the `f2` directory (and its sub(sub)directories? Give the name and path to each one. 
+ * **Lab Question 7 (10 points)**: Give the command(s) you would use to copy `Goldilocks.txt` into the `beds` directory, assuming you start in the `f2` directory.
+ * **Lab Question 8 (10 points)**: Give the command(s) you would use to delete the `JustRight.txt` file from the `chairs` subdirectory (since Goldilocks broke it), assuming you start from the `f2` directory.
+ * **Lab Question 9 (15 points)**: Our hero Theseus is looking for the Minotaur monster somewhere in the `f3` directory's maze of subdirectories.  Find the file `Minotaur.txt` and give the `mv` command(s) that would move the `Theseus.txt` file into the same directory as `Minotaur.txt` so that Theseus can save the day. (assum that you start in the `f3` directory)
+ * **Lab Question 10 (10 points)**: What is the full path to the directory where Theseus and the Minotaur now are?
 
 ---
 
@@ -338,7 +338,7 @@ You will now edit the `src.c` file to modify its behavior.  Hopefully the conten
 
 ---
 
- * **Lab Question 11**. What is the result that is now output by the `a.out` program?
+ * **Lab Question 11 (10 points)**. What is the result that is now output by the `a.out` program?
 
 ---
 
