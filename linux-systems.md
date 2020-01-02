@@ -20,7 +20,7 @@ Lab questions that you will need to record and submit your answers for are indic
 
 ---
 
-Lab question answers will be submitted on Canvas. 
+You will submit answers to lab questions on Canvas. 
 
 
 ### The Command Line
@@ -60,9 +60,9 @@ Once you have located and run the terminal application you will use it to run th
 
 ### Step 1. Virtual Private Network (VPN)
 
-The department lab machines only allow connections from within the department network.  
+The department prefers that department lab machines only receive connections from within the department network.  
 To do this remotely, we will use a *Virtual Private Network (VPN)*
-A VPN will allow your remote machine to be on the department's private network so that you can remotely connect to the lab machines. 
+A VPN will allow your remote machine to be on the department's private network so that you can remotely connect to the lab machines and access other department resources. 
 To get this working, you need to follow the department's instructions (https://docs.cs.byu.edu/doku.php?id=vpn-configuration-and-use).
 
 ---
@@ -82,8 +82,8 @@ ssh user@schizo.cs.byu.edu
 ```
 
 where `user` should be replaced by your cs id / user name.  This will connect to the schizo machine in the department, which will in turn connect you to another lab machine which you will work on. If you ever want to connect directly to a specific lab machine, you can replace `schizo` with the name of that machine in the ssh command.
-
-You will be prompted to enter your CS account password.  You will then be asked if you want to trust the certificate of the `schizo` machine (since this is your first time connecting).  You can type `Y` or `Yes` and then press enter. 
+It rarely matters exactly which machine you are connected to, and all CS machines have access to the same file system, so all of your files and folders will be exactly the same on any CS machine. 
+You will be prompted to enter your CS account password (If you have trouble with your CS account see: https://docs.cs.byu.edu/doku.php?id=setting-up-your-account-with-the-cs-authentication-system or ask TAs).  You will then be asked if you want to trust the certificate of the `schizo` machine (since this is your first time connecting).  You can type `Y` or `Yes` and then press enter. 
 
 You should now see a welcome message from the department machine and then another command prompt, which will display `user@machine:~$`, where `user` will be replaced by your cs user name and `machine` will be the name of the machine that you get connected to.
 
@@ -161,6 +161,8 @@ To move out of a subdirectory to the directory that contains it, you type two do
 cd ..
 ```
 
+If you type `cd` and press enter (without an argument) it will return you to your home directory. 
+
 ---
 
 #### Task 6. Use `cd` to move into the directory you created for Task 5.  Then use `cd ..` to move back into your home directory.
@@ -217,7 +219,7 @@ After using `cp` the file will still exist in the old location, and the newly na
 ---
 
 ### Command 3. mv
-If we want to move a file to another location, so that it no longer is at the previous location, we use the `mv` command, which stands for *move*.  This command is used in exactly the same way as the `cp` command.  You first give the path to the original file, then the path to the new location for the file.  You can rename the file when you move it, or you can leave the name the same.  This command is often used to rename a file without moving it.  To rename a file `file1.txt` in the current directory to have the new name `file2.txt` the following would be typed. 
+If we want to move a file to another location, so that it no longer is at the previous location, we use the `mv` command, which stands for *move*.  This command is used in exactly the same way as the `cp` command.  You first give the path to the original file, then the path to the new location for the file.  You can rename the file when you move it, or you can leave the name the same.  This command is often used to rename a file without changing the directory that it is in.  To rename a file `file1.txt` in the current directory to have the new name `file2.txt` the following would be typed. 
 
 ```
 mv file1.txt file2.txt
@@ -258,7 +260,7 @@ The basic program that we will use to edit files in this class is `nano`.  (Ther
 ```
 nano lab0.txt
 ```
-At this point the terminal window will display an editor.  You can navigate around with the arrow keys and type text as normal in the file. To save a file you hit CTRL-O and then type in the name of the file to save (it defaults to the current name of the file, in which case you can just hit ENTER).  You type CTRL-X to exit the program and go back to the terminal. Other commands are displayed at the bottom of the window. 
+If the file you give doesn't exist, then it will be created.  At this point the terminal window will display an editor.  You can navigate around with the arrow keys and type text as normal in the file. To save a file you hit CTRL-O and then type in the name of the file to save (it defaults to the current name of the file, in which case you can just hit ENTER).  You type CTRL-X to exit the program and go back to the terminal. Other commands are displayed at the bottom of the window. 
 
 ---
 
@@ -283,7 +285,7 @@ You now have the skills necessary to work with directories and files.  You will 
 ### Step 1. Copy the compressed lab directory 
 
 ```
-cp pathtolab/lab0.tar.gz .
+cp /users/groups/cs224ta/lab0.tar.gz .
 ```
 
 ### Step 2. Extract the directory
@@ -332,7 +334,7 @@ You will now edit the `src.c` file to modify its behavior.  Hopefully the conten
 
 ---
 
-#### Task 13. Open the src.c file and modify it so that instead of each being set to 0, they are set to new values as follows: first is set to 270 and second to 289.  Recompile the program and run it again.
+#### Task 13. Open the src.c file and modify it so that instead of each constant being set to 0, they are now set to new values as follows: first is set to 270 and second to 289.  Recompile the program and run it again.
 
 ---
 
@@ -349,7 +351,7 @@ Congratulations!  Having finished all of the above steps you just need to enter 
 
 ---
 
- * You can use the up and down arrows from the command prompt to cycle through the passed commands that you have typed in.  This is especially useful for longer commands that take a long time to type in, or that are hard to remember.  If you have done the command recently, you can just push up and it will bring it back.  A common time this occurs is when you will repeatedly use `nano` to edit some code, then compile it, and then run it.  Since the code never works right the first time, you can press up three times and you are back to the `nano` command, then when you are done editing you can press up three times to be back to the compile command, and then up three times to the run program command.  
+ * You can use the up and down arrows from the command prompt to cycle through the previous commands that you have typed in.  This is especially useful for longer commands that take a long time to type in, or that are hard to remember.  If you have done the command recently, you can just push up and it will bring it back.  A common time this occurs is when you will repeatedly use `nano` to edit some code, then compile it, and then run it.  Since the code never works right the first time, you can press up three times and you are back to the `nano` command, then when you are done editing you can press up three times to be back to the compile command, and then up three times to the run program command.  
  * The command line supports tab completion of directory and file names.  When you are typing the name of a file you can press TAB and it will complete the name.  You need to have enough of the name typed in so that it knows what you want, but this often can save a lot of typing.
  * Another useful command is `tree` which will display the file and (sub)directory structure of the current folder.  Try this with the `Lab0` folder and see how easy it makes getting a sense for the structure of the file system. 
  * The `man` command (for *manual*) will give you the details of how to use any command that we have talked about, and many more.  For example, just type `man ls` to get the manual for `ls` command.  This can be useful if you can't remember a specific option for a command.
@@ -361,7 +363,7 @@ Congratulations!  Having finished all of the above steps you just need to enter 
 
 ---
 
- * VPN - Virtual Private Network, allows us to connect to a private network remotely, and do things we can only do from within that network, like `ssh` into the lab machines
+ * VPN - Virtual Private Network, allows us to connect to a private network remotely, and do things are only possible, or preferred to occur, from within that network, like `ssh` into the lab machines
  * `ssh` (secure shell), this allows us to remotely connect to another machine and use its terminal. 
  * `pwd` (print working directory) this shows us what the current directory of the terminal is. 
  * `ls` (list) this list the contents of the current directory
