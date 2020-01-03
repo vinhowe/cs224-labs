@@ -58,21 +58,8 @@ Once you have located and run the terminal application you will use it to run th
 
 (If you are physically at a lab machine, then you can skip this part.)
 
-### Step 1. Virtual Private Network (VPN)
 
-The department prefers that department lab machines only receive connections from within the department network.  
-To do this remotely, we will use a *Virtual Private Network (VPN)*
-A VPN will allow your remote machine to be on the department's private network so that you can remotely connect to the lab machines and access other department resources. 
-To get this working, you need to follow the department's instructions (https://docs.cs.byu.edu/doku.php?id=vpn-configuration-and-use).
-
----
-
-#### Task 2: Login to the CS department's VPN.
-
----
-
-
-### Step 2. Secure Shell (SSH)
+### Step 1. Secure Shell (SSH)
 Once you are logged into the VPN, you are ready to remotely log into the lab machines. To do this, we will use a program called `ssh`.  This stands for *Secure Shell* or *Secure Socket Shell*.  This program allows us to be on the terminal of another computer from a terminal on another computer. 
 
 To run the `ssh` program, you will need to type the following at the command prompt: 
@@ -91,7 +78,7 @@ You are now remotely logged into a lab machine and can type commands at the term
 
 ---
 
-#### Task 3: ssh into a lab machines
+#### Task 2: ssh into a lab machines
 
 ---
 
@@ -126,7 +113,7 @@ There are command line options that you can use with `ls`.  For example, typing 
 
 ---
 
-#### Task 4: Use `ls` to find out what is in your home directory.  
+#### Task 3: Use `ls` to find out what is in your home directory.  
 
 ---
 
@@ -141,7 +128,7 @@ mkdir cs224
 
 ---
 
-#### Task 5: Use `mkdir` to create a directory to contain your work for this class. 
+#### Task 4: Use `mkdir` to create a directory to contain your work for this class. 
 
 ---
 
@@ -165,7 +152,7 @@ If you type `cd` and press enter (without an argument) it will return you to you
 
 ---
 
-#### Task 6. Use `cd` to move into the directory you created for Task 5.  Then use `cd ..` to move back into your home directory.
+#### Task 5. Use `cd` to move into the directory you created for Task 5.  Then use `cd ..` to move back into your home directory.
 
 ---
 
@@ -188,7 +175,7 @@ in the directory where you want the file to be created.
 
 ---
 
-#### Task 7. Use `touch` to create a file called `lab0.txt` in the directory you created for Task 5. 
+#### Task 6. Use `touch` to create a file called `lab0.txt` in the directory you created for Task 5. 
 
 ---
 
@@ -214,7 +201,7 @@ After using `cp` the file will still exist in the old location, and the newly na
 
 ---
 
-#### Task 8. Use `cp` to create a copy of the `lab0.txt` file you created for Task 7.  Name it `task8.txt`. 
+#### Task 7. Use `cp` to create a copy of the `lab0.txt` file you created for Task 6.  Name it `task7.txt`. 
 
 ---
 
@@ -227,22 +214,22 @@ mv file1.txt file2.txt
 
 ---
 
-#### Task 9. Rename the copy of lab0.txt that you created for Task 8.  Name it `task9.txt`. 
+#### Task 8. Rename the copy of lab0.txt that you created for Task 7.  Name it `task8.txt`. 
 
 ---
 
-When this is done, you should use the `ls` command to ensure that you only have two files: `lab0.txt` and `task9.txt` in your newly created folder.  
+When this is done, you should use the `ls` command to ensure that you only have two files: `lab0.txt` and `task8.txt` in your newly created folder.  
 
 ### Command 4. rm
 To delete a file, we use the `rm` command, which stands for *remove*.  It simply needs the path/name of the file to be deleted.  If you want to delete the `task9.txt` file that we created in Taks 8 and renamed in Task 9, you would type the following
 
 ```
-rm task9.txt
+rm task8.txt
 ```
 
 ---
 
-#### Task 10. Delete the `task9.txt` file that you worked with in Tasks 8 and 9. 
+#### Task 9. Delete the `task8.txt` file that you worked with in Tasks 7 and 8. 
 
 ---
 
@@ -264,7 +251,7 @@ If the file you give doesn't exist, then it will be created.  At this point the 
 
 ---
 
-#### Task 11. Use `nano` to edit the `lab0.txt` file you created in Task 7.  Type in some text, save it, and then exit back to the terminal. 
+#### Task 10. Use `nano` to edit the `lab0.txt` file you created in Task 7.  Type in some text, save it, and then exit back to the terminal. 
 ---
 
 To view the contents of a file from the command line, without being able to edit them you can use the `cat` command, which takes the file name/path as an argument.  To view the contents of a file name `file1.txt` you would type
@@ -274,7 +261,7 @@ cat file1.txt
 
 ---
 
-#### Task 12. Use `cat` to view the contents of `lab0.txt` from the terminal. 
+#### Task 11. Use `cat` to view the contents of `lab0.txt` from the terminal. 
 
 ---
 
@@ -334,7 +321,7 @@ You will now edit the `src.c` file to modify its behavior.  Hopefully the conten
 
 ---
 
-#### Task 13. Open the src.c file and modify it so that instead of each constant being set to 0, they are now set to new values as follows: first is set to 270 and second to 289.  Recompile the program and run it again.
+#### Task 12. Open the src.c file and modify it so that instead of each constant being set to 0, they are now set to new values as follows: first is set to 270 and second to 289.  Recompile the program and run it again.
 
 ---
 
@@ -363,7 +350,6 @@ Congratulations!  Having finished all of the above steps you just need to enter 
 
 ---
 
- * VPN - Virtual Private Network, allows us to connect to a private network remotely, and do things are only possible, or preferred to occur, from within that network, like `ssh` into the lab machines
  * `ssh` (secure shell), this allows us to remotely connect to another machine and use its terminal. 
  * `pwd` (print working directory) this shows us what the current directory of the terminal is. 
  * `ls` (list) this list the contents of the current directory
