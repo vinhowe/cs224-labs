@@ -267,7 +267,7 @@ cat file1.txt
 
 ## Part 6. File System Tasks
 
-You now have the skills necessary to work with directories and files.  You will copy a compressed directory from our class directory, decompress/extract it, and then use the skills you have learned to answer questions about it an modify it. Make sure you execute the following commands from the directory for this class that you created in Task 5. 
+You now have the skills necessary to work with directories and files.  You will copy a compressed directory from our class directory, decompress/extract it, and then use the skills you have learned to answer questions about it and modify it. Make sure you execute the following commands from the directory for this class that you created in Task 4. 
 
 ### Step 1. Copy the compressed lab directory 
 
