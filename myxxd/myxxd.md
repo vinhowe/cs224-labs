@@ -106,13 +106,13 @@ The output is best understood by breaking it into three sections: (1) file offse
 
 The file offset (1) is the number of bytes from the beginning of the file where the data is located. In other words, it is the byte address in the file for the data that follows. The address itself is 32-bits in length or 4-bytes in total. The offset should be output as a 4-byte hexadecimal number. The `readAndPrintAsHex` function in the `myxxd.c` starter code shows how to use `printf` to output the file offset: `printf("%08x:", offset);` where `08x` prints in as 8 hexadecimal characters. 
 
-The hex dump (2) is the actual byte values in the file starting at the indicated offset. There are at most 16 of these on each line and they are grouped by pairs. In the example `57` is the byte displayed in hexadecmal at address `00000000`, `68` is the byte in hexadecimal at address `0000000001`, `61` is the byte in hexadecimal at address `00000002`, etc. The width of the hex dump as always 16-bytes with the extra spaces between the pairs plus an extra space on the end to separate it from section (3) the character representation. **This fixed width means that partial lines must be padded with extra space** as in the example.
+The hex dump (2) is the actual byte values in the file starting at the indicated offset. There are at most 16 of these on each line and they are grouped by pairs. In the example `57` is the byte displayed in hexadecimal at address `00000000`, `68` is the byte in hexadecimal at address `0000000001`, `61` is the byte in hexadecimal at address `00000002`, etc. The width of the hex dump as always 16-bytes with the extra spaces between the pairs plus an extra space on the end to separate it from section (3) the character representation. **This fixed width means that partial lines must be padded with extra space** as in the example.
 
 ``` 
 00000010: 7574 7075 7420 6d65 616e 3f0a            utput mean?.
 ```
 
-The hex dump section in the starter code is output by the function `void printDataAsHex(char* data, size_t size)`. The array `data` contains `size` number of bytes and `size` is never more than 16 but can be less than 16.
+The hex dump section in the starter code is output by the function `void printDataAsHex(unsigned char* data, size_t size)`. The array `data` contains `size` number of bytes and `size` is never more than 16 but can be less than 16.
 
 The character representation (3) is exactly that. The ASCII character for each byte. Characters are encoded by ASCII that assigns each character an integer value in the range of `0` and `127` inclusive (see `man ascii`). Printable characters start at the space (decimal value `20`) and end at the tilde (decimal value 126). Any character that is not in the range of `20` and `126` inclusive in represented with a period (`.`). 
 
@@ -122,7 +122,7 @@ The character representation (3) is exactly that. The ASCII character for each b
 
 The last character in the hex dump, `0a`, in the `nl` character for *newline*. It is outside the range with decimal value `10` and so it appears as a `.` in the character representation. Unlike the hex dump, no padding in required to fill partial lines in the character representation. 
 
-The character representation section in the starter code is output by the function `void printDataAsChars(char* data, size_t size)`. The array `data` contains `size` number of bytes and `size` is never more than 16 but can be less than 16.
+The character representation section in the starter code is output by the function `void printDataAsChars(unsigned char* data, size_t size)`. The array `data` contains `size` number of bytes and `size` is never more than 16 but can be less than 16.
 
 # Making Sense of the xxd Bits Dump
 
@@ -287,8 +287,8 @@ The command line provides a very easy solution to a non-terminating program: `CT
   1. Read all of the write up and play with `xxd` and I/O redirection as you read about it.
   2. Study the starter code in `myxxd.c` and correlate it with the writeup.
   3. Write a few simple test inputs to drive development (start small).
-  4. Implement `void printDataAsHex(char* data, size_t size)` and test it.
-  5. Implement `void printDataAsChars(char* data, size_t size)` and test it.
+  4. Implement `void printDataAsHex(unsigned char* data, size_t size)` and test it.
+  5. Implement `void printDataAsChars(unsigned char* data, size_t size)` and test it.
   6. Test a few bigger inputs and use diff to compare the output.
   7. Follow the pattern in `readAndPrintInputAsHex` to implement `void readAndPrintInputAsBits(FILE* input)`.
 
@@ -300,8 +300,8 @@ Upload the completed `myxxd.c` file containing the solution to [canvas](http://c
 
 The TA's build the solution and test it against a set of input files by comparing the output from the program to that of `xxd` using `diff`.
 
-`void printDataAsHex(char* data, size_t size)` (40 points)
-`void printDataAsChars(char* data, size_t size)` (40 points)
+`void printDataAsHex(unsigned char* data, size_t size)` (40 points)
+`void printDataAsChars(unsigned char* data, size_t size)` (40 points)
 Exact match with `xxd` default behavior on all input files (10 points)
 `void readAndPrintInputAsBits(FILE* input)` (80)
 Exact match with `xxd -b` on all input files (10 points)

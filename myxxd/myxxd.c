@@ -38,7 +38,7 @@ FILE* parseCommandLine(int argc, char** argv, int* bits) {
  * data: an array of no more than 16 characters
  * size: the size of the array
  **/
-void printDataAsHex(char* data, size_t size) {
+void printDataAsHex(unsigned char* data, size_t size) {
 	printf("TODO 1: printDataAsHex (2)");
 }
 
@@ -50,12 +50,12 @@ void printDataAsHex(char* data, size_t size) {
  * data: an array of no more than 16 characters
  * size: the size of the array
  **/
-void printDataAsChars(char* data, size_t size) {
+void printDataAsChars(unsigned char* data, size_t size) {
 	printf("TODO 2: printDataAsChars (3)");
 }
 
 void readAndPrintInputAsHex(FILE* input) {
-	char data[16];
+	unsigned char data[16];
 	int numBytesRead = fread(data, 1, 16, input);
 	unsigned int offset = 0;
 	while (numBytesRead != 0) {
