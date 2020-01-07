@@ -12,9 +12,9 @@
 
 The goal of this lab is to write a program that mimics some of the functionality of the `xxd` command line tool that creates a hex or bits dump or its input (see `man xxd`). The part of `xxd` to mimic is its default behavior when reading from standard input that generates a hex dump of the input and the `-b` (`-bits`) flag that switches it to a bits (binary digits) dump of the input. 
 
-The `myxxd.c` file contains code to parse the command line options (`parseCommandLine`) and then call the appropriate output function for the hex dump (`readAndPrintInputAsHex`) or the bits dump (`readAndPrintInputAsBits`). The file also contains an implementation of `readAndPrintInputAsHex` to handle reading from `stdin` using the `fread` C library function. The implementation of `readAndPrintInputAsHex` calls two unimplemented functions `printDataAsHex` and `printDataAsChars` that produce the actual hex dump. Implementing these two functions is the starting point for the lab. Once these are implemented and tested, follow the same structure to implement `readAndPrintInputAsBits`: the function should be implemented using the same decomposition of the problem as in `readAndPrintInputAsHex` but differ in the number of bytes read at a time by `fread` and how those bytes are displayed in the output.  
+The [myxxd.c](myxxd.c) file contains code to parse the command line options (`parseCommandLine`) and then call the appropriate output function for the hex dump (`readAndPrintInputAsHex`) or the bits dump (`readAndPrintInputAsBits`). The file also contains an implementation of `readAndPrintInputAsHex` to handle reading from `stdin` using the `fread` C library function. The implementation of `readAndPrintInputAsHex` calls two unimplemented functions `printDataAsHex` and `printDataAsChars` that produce the actual hex dump. Implementing these two functions is the starting point for the lab. Once these are implemented and tested, follow the same structure to implement `readAndPrintInputAsBits`: the function should be implemented using the same decomposition of the problem as in `readAndPrintInputAsHex` but differ in the number of bytes read at a time by `fread` and how those bytes are displayed in the output.  
 
-Upload the final `myxxd.c` file to [Canvas](http://canvas.byu.edu) for submission. A correct solution exactly matches the output from `xxd` with and without the `-b` flag an any input to `stdin`.
+Upload the final [myxxd.c](myxxd.c) file to [Canvas](http://canvas.byu.edu) for submission. A correct solution exactly matches the output from `xxd` with and without the `-b` flag an any input to `stdin`.
 
 # Building and Running the Program
 
@@ -104,7 +104,7 @@ The output is best understood by breaking it into three sections: (1) file offse
 00000000: 5768 6174 2064 6f65 7320 7468 6973 206f  What does this o
 ```
 
-The file offset (1) is the number of bytes from the beginning of the file where the data is located. In other words, it is the byte address in the file for the data that follows. The address itself is 32-bits in length or 4-bytes in total. The offset should be output as a 4-byte hexadecimal number. The `readAndPrintAsHex` function in the `myxxd.c` starter code shows how to use `printf` to output the file offset: `printf("%08x:", offset);` where `08x` prints in as 8 hexadecimal characters. 
+The file offset (1) is the number of bytes from the beginning of the file where the data is located. In other words, it is the byte address in the file for the data that follows. The address itself is 32-bits in length or 4-bytes in total. The offset should be output as a 4-byte hexadecimal number. The `readAndPrintAsHex` function in the [myxxd.c](myxxd.c) starter code shows how to use `printf` to output the file offset: `printf("%08x:", offset);` where `08x` prints in as 8 hexadecimal characters. 
 
 The hex dump (2) is the actual byte values in the file starting at the indicated offset. There are at most 16 of these on each line and they are grouped by pairs. In the example `57` is the byte displayed in hexadecimal at address `00000000`, `68` is the byte in hexadecimal at address `0000000001`, `61` is the byte in hexadecimal at address `00000002`, etc. The width of the hex dump as always 16-bytes with the extra spaces between the pairs plus an extra space on the end to separate it from section (3) the character representation. **This fixed width means that partial lines must be padded with extra space** as in the example.
 
@@ -285,7 +285,7 @@ The command line provides a very easy solution to a non-terminating program: `CT
 # Where to start?
 
   1. Read all of the write up and play with `xxd` and I/O redirection as you read about it.
-  2. Study the starter code in `myxxd.c` and correlate it with the writeup.
+  2. Study the starter code in [myxxd.c](myxxd.c) and correlate it with the writeup.
   3. Write a few simple test inputs to drive development (start small).
   4. Implement `void printDataAsHex(unsigned char* data, size_t size)` and test it.
   5. Implement `void printDataAsChars(unsigned char* data, size_t size)` and test it.
@@ -294,7 +294,7 @@ The command line provides a very easy solution to a non-terminating program: `CT
 
 # Submission
 
-Upload the completed `myxxd.c` file containing the solution to [canvas](http://canvas.byu.edu) in the appropriate lab.
+Upload the completed [myxxd.c](myxxd.c) file containing the solution to [canvas](http://canvas.byu.edu) in the appropriate lab.
 
 # Rubric
 
