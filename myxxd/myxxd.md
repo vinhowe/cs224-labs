@@ -6,8 +6,7 @@
   * Use `fread` to read bytes from a file
   * Convert ascii decimal values for characters to a string of ones and zeros representing it's binary encoding
   * Use `<`, `cat`, `echo`, and `|` in the terminal to provide data to `stdin` for a C program to read
-  * Use `gdb` to load a program, provide input data via `stdin` from a file, set a break point on a line, and step the program for debugging
-
+  
 # Project Summary
 
 The goal of this lab is to write a program that mimics some of the functionality of the `xxd` command line tool that creates a hex or bits dump or its input (see `man xxd`). The part of `xxd` to mimic is its default behavior when reading from standard input that generates a hex dump of the input and the `-b` (`-bits`) flag that switches it to a bits (binary digits) dump of the input. 
@@ -16,7 +15,36 @@ The [myxxd.c](myxxd.c) file contains code to parse the command line options (`pa
 
 Upload the final [myxxd.c](myxxd.c) file to [Canvas](http://canvas.byu.edu) for submission. A correct solution exactly matches the output from `xxd` with and without the `-b` flag an any input to `stdin`.
 
-# Building and Running the Program
+# Where to start?
+
+  1. Read all of the write up and play with `xxd` and I/O redirection as you read about it.
+  2. Study the starter code in [myxxd.c](myxxd.c) and correlate it with the writeup.
+  3. Write a few simple test inputs to drive development (start small).
+  4. Implement `void printDataAsHex(unsigned char* data, size_t size)` and test it.
+  5. Implement `void printDataAsChars(unsigned char* data, size_t size)` and test it.
+  6. Test a few bigger inputs and use diff to compare the output.
+  7. Follow the pattern in `readAndPrintInputAsHex` to implement `void readAndPrintInputAsBits(FILE* input)`.
+
+# Submission
+
+Upload the completed [myxxd.c](myxxd.c) file containing the solution to [canvas](http://canvas.byu.edu) in the appropriate lab.
+
+# Rubric
+
+The TA's build the solution and test it against a set of input files by comparing the output from the program to that of `xxd` using `diff`.
+
+  * `void printDataAsHex(unsigned char* data, size_t size)` (40 points)
+  * `void printDataAsChars(unsigned char* data, size_t size)` (40 points)
+  * Exact match with `xxd` default behavior on all input files (10 points)
+  * `void readAndPrintInputAsBits(FILE* input)` (80)
+  * Exact match with `xxd -b` on all input files (10 points)
+  * Style (20 points)
+
+# Project Details
+
+Carefully reading the project details is likely to save hours in completing the lab. Take time to understand **what** needs to be done, then plan out **how** to get it done, and finally do it. Each of the sections below is intended to answer the **what** and **how** for this project.
+
+## Building and Running the Program
 
 The program is build with the following command.
 
@@ -32,7 +60,7 @@ Running the program is equally as easy.
 $ ./myxxd
 ```
 
-# Providing Input
+## Providing Input
 
 *Standard input* is equivalent to the input stream `cin` in the C++ language. The C language equivalent is `stdin` and is defined in `stdio.h` (e.g., `#include <stdio.h>`). As in C++, reading from `stdin` reads typed characters at the keyboard. Keyboard input is easy; run `xxd` and then then type as in below.
 
@@ -87,7 +115,7 @@ The program, `xxd`, is on the left of `<` and the file, `input.txt` is on the ri
 
 `cat`, `echo`, `|`, and `<` give many options to providing input from the command line to `stdin` for the program. These combined with the up-arrow key should make testing the program efficient and convenient.
 
-# Making Sense of the xxd Hex Dump
+## Making Sense of the xxd Hex Dump
 
 It is important to understand the `xxd` output in order to mimic it. It will be explained by example and connected to the provided starter file.
 
@@ -124,7 +152,7 @@ The last character in the hex dump, `0a`, in the `nl` character for *newline*. I
 
 The character representation section in the starter code is output by the function `void printDataAsChars(unsigned char* data, size_t size)`. The array `data` contains `size` number of bytes and `size` is never more than 16 but can be less than 16.
 
-# Making Sense of the xxd Bits Dump
+## Making Sense of the xxd Bits Dump
 
 The bits dump (`-b` or `-bits`) is similar to the hex dump only the bytes are output in the binary representation of their ASCII value, section (2) only outputs six bytes rather than 16, and bytes are not paired.
 
@@ -139,7 +167,7 @@ $ echo "What does this output mean?" | xxd -bits
 
 As before, padding is added to fill partially complete lines. Functionality for this section is to be implemented in the `void readAndPrintInputAsBits(FILE* input)` function following the pattern in its hex dump counterpart.
 
-# Checking Output
+## Checking Output
 
 There are two ways to check the output: visually and programatically. Visually comparing output is fine for small inputs but breakdowns for big (more complex) inputs. The `diff` is a programmatic solution in that it compares two files line by line and reports any differences (see `man diff`). Using `diff` though requires two files files to compare. 
 
@@ -173,101 +201,7 @@ $ diff myxxd.txt xxd.txt
 > 000001f0: 7273 6543 6f6d 6d61 6e64 4c69 6e65 2869  rseCommandLine(i
 ```
 
-# Debugging with GDB
-
-The command line does provide a debugger for making sense of a misbehaving program. It is called `gdb`. It is invoke as follows.
-
-```
-$ gcc -Wall -g myxxd.c -o myxxd
-egm@tajmahal:~/tmp$ gdb myxxd
-GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
-Copyright (C) 2018 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
-and "show warranty" for details.
-This GDB was configured as "x86_64-linux-gnu".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-<http://www.gnu.org/software/gdb/bugs/>.
-Find the GDB manual and other documentation resources online at:
-<http://www.gnu.org/software/gdb/documentation/>.
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from myxxd...done.
-(gdb) 
-```
-
-Here are a few commands to get started:
-
-  * Running and giving input: `run < input.txt` (`input.txt` can be any file)
-  * Setting a break point on a line:  `break myxxd.c:37` (any line can be specified)
-  * Stepping into a program stopped at some point: `step` (it steps into called functions)
-  * Stepping over a program stopped at some point: `next` (it steps over called functions)
-  * Continuing: `continue`
-  * Deleting a breakpoint: `delete 1` (where 1 is the breakpoint number from where it was created)
-  * Quitting `gdb`: `quit`
-  * Printing local variables: `print i` or `print data[i]` (`print` followed be some variable)
-  * Where a segmentation fault happens: `where`
-  * Help: `help` (gives subtopics for example `help breakpoints`)
-
-Here is an example session.
-
-```
-$ gdb myxxd
-GNU gdb (Ubuntu 8.1-0ubuntu3.2) 8.1.0.20180409-git
-Copyright (C) 2018 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
-This is free software: you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
-and "show warranty" for details.
-This GDB was configured as "x86_64-linux-gnu".
-Type "show configuration" for configuration details.
-For bug reporting instructions, please see:
-<http://www.gnu.org/software/gdb/bugs/>.
-Find the GDB manual and other documentation resources online at:
-<http://www.gnu.org/software/gdb/documentation/>.
-For help, type "help".
-Type "apropos word" to search for commands related to "word"...
-Reading symbols from myxxd...done.
-(gdb) break myxxd.c:36 
-Breakpoint 1 at 0x8c8: file myxxd.c, line 36.
-(gdb) run < myxxd.c
-Starting program: /users/faculty/egm/tmp/myxxd < myxxd.c
-
-Breakpoint 1, printDataAsChars (data=0x7fffffffe2c0 "#include <stdio.\b\344\377\377\377\177", size=16) at myxxd.c:36
-36		while(i < size) {
-(gdb) print i
-$1 = 0
-(gdb) print size
-$2 = 16
-(gdb) next
-37			c = data[i];
-(gdb) next
-38			if(c < ' ' || c > '~') {
-(gdb) next
-41			printf("%c", c);
-(gdb) print data[i]
-$3 = 35 '#'
-(gdb) next
-42			++i;
-(gdb) next
-36		while(i < size) {
-(gdb) continue
-Continuing.
-00000000: 2369 6e63 6c75 6465 203c 7374 6469 6f2e  #include <stdio.
-
-Breakpoint 1, printDataAsChars (data=0x7fffffffe2c0 "h>\n#include <std\b\344\377\377\377\177", size=16) at myxxd.c:36
-36		while(i < size) {
-(gdb) delete 1
-(gdb) continue
-Continuing.
-...lots of output
-(gdb) quit
-$
-```
-
-# What to do with an infinite loop?
+## What to do with an infinite loop?
 
 My favorite infinite loop is the one below.
 
@@ -282,27 +216,6 @@ Here I forgot to increment `i` in the loop body, so for sure this program will n
 
 The command line provides a very easy solution to a non-terminating program: `CTRL-c` (`^c`). Like `CTRL-d`, hold down the control key and this time type `c` while holding the key. After a brief pause the program will exit and give back the command line prompt. **Never kill the shell to fix an infinite loop.** Killing the shell leaves the program running and will seriously bog down the machine.
 
-# Where to start?
+## I need a debugger!
 
-  1. Read all of the write up and play with `xxd` and I/O redirection as you read about it.
-  2. Study the starter code in [myxxd.c](myxxd.c) and correlate it with the writeup.
-  3. Write a few simple test inputs to drive development (start small).
-  4. Implement `void printDataAsHex(unsigned char* data, size_t size)` and test it.
-  5. Implement `void printDataAsChars(unsigned char* data, size_t size)` and test it.
-  6. Test a few bigger inputs and use diff to compare the output.
-  7. Follow the pattern in `readAndPrintInputAsHex` to implement `void readAndPrintInputAsBits(FILE* input)`.
-
-# Submission
-
-Upload the completed [myxxd.c](myxxd.c) file containing the solution to [canvas](http://canvas.byu.edu) in the appropriate lab.
-
-# Rubric
-
-The TA's build the solution and test it against a set of input files by comparing the output from the program to that of `xxd` using `diff`.
-
-`void printDataAsHex(unsigned char* data, size_t size)` (40 points)
-`void printDataAsChars(unsigned char* data, size_t size)` (40 points)
-Exact match with `xxd` default behavior on all input files (10 points)
-`void readAndPrintInputAsBits(FILE* input)` (80)
-Exact match with `xxd -b` on all input files (10 points)
-Style (20 points)
+The debugger is `gdb` and it is available from the command line if needed. This [primer](../gdb-primer.md) is a good starting point. There are many good online resources as well.
