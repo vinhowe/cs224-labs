@@ -60,7 +60,7 @@ Once you have located and run the terminal application you will use it to run th
 
 
 ### Step 1. Secure Shell (SSH)
-Once you are logged into the VPN, you are ready to remotely log into the lab machines. To do this, we will use a program called `ssh`.  This stands for *Secure Shell* or *Secure Socket Shell*.  This program allows us to be on the terminal of another computer from a terminal on another computer. 
+To remotely log into the department machines, we will use a program called `ssh`.  This stands for *Secure Shell* or *Secure Socket Shell*.  This program allows us to be on the terminal of another computer from a terminal on another computer. 
 
 To run the `ssh` program, you will need to type the following at the command prompt: 
 
