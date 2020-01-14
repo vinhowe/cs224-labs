@@ -18,16 +18,18 @@
  * returns the input file pointer (FILE*)
  **/
 FILE* parseCommandLine(int argc, char** argv, int* bits) {
-	if (argc > 2) {
-		printf("Usage: %s [-b]\n", argv[0]);
-		exit(BAD_NUMBER_ARGS);
-	}
-
-	if (argc == 2 && (strcmp(argv[1], "-b") == 0 || strcmp(argv[1], "-bits") == 0)) {
-		*bits = 1;
-	}
-
-	return stdin;
+    if (argc > 2) {
+	printf("Usage: %s [-b|-bits]\n", argv[0]);
+	exit(BAD_NUMBER_ARGS);
+    }
+    
+    if (argc == 2 && (strcmp(argv[1], "-b") == 0 || strcmp(argv[1], "-bits") == 0)) {
+	*bits = TRUE;
+    } else {
+	*bits = FALSE;
+    }
+    
+    return stdin;
 }
 
 /**
@@ -39,7 +41,7 @@ FILE* parseCommandLine(int argc, char** argv, int* bits) {
  * size: the size of the array
  **/
 void printDataAsHex(unsigned char* data, size_t size) {
-	printf("TODO 1: printDataAsHex (2)");
+    printf("TODO 1: printDataAsHex (2)");
 }
 
 /**
@@ -51,22 +53,22 @@ void printDataAsHex(unsigned char* data, size_t size) {
  * size: the size of the array
  **/
 void printDataAsChars(unsigned char* data, size_t size) {
-	printf("TODO 2: printDataAsChars (3)");
+    printf("TODO 2: printDataAsChars (3)");
 }
 
 void readAndPrintInputAsHex(FILE* input) {
-	unsigned char data[16];
-	int numBytesRead = fread(data, 1, 16, input);
-	unsigned int offset = 0;
-	while (numBytesRead != 0) {
-		printf("%08x:", offset);
-		offset += numBytesRead;
-		printDataAsHex(data, numBytesRead);
-		printf("  ");
-		printDataAsChars(data, numBytesRead);
-		printf("\n");
-		numBytesRead = fread(data, 1, 16, input);
-	}
+    unsigned char data[16];
+    int numBytesRead = fread(data, 1, 16, input);
+    unsigned int offset = 0;
+    while (numBytesRead != 0) {
+	printf("%08x:", offset);
+	offset += numBytesRead;
+	printDataAsHex(data, numBytesRead);
+	printf("  ");
+	printDataAsChars(data, numBytesRead);
+	printf("\n");
+	numBytesRead = fread(data, 1, 16, input);
+    }
 }
 
 /**
@@ -77,17 +79,17 @@ void readAndPrintInputAsHex(FILE* input) {
  * input: input stream
  **/
 void readAndPrintInputAsBits(FILE* input) {
-	printf("TODO 3: readAndPrintInputAsBits\n");
+    printf("TODO 3: readAndPrintInputAsBits\n");
 }
 
 int main(int argc, char** argv) {
-	int bits = 0;
-	FILE* input = parseCommandLine(argc, argv, &bits);
-	
-	if (bits == 0) {
-		readAndPrintInputAsHex(input);
-	} else {
-		readAndPrintInputAsBits(input);
-	}
-	return 0;
+    int bits = FALSE;
+    FILE* input = parseCommandLine(argc, argv, &bits);
+    
+    if (bits == FALSE) {
+	readAndPrintInputAsHex(input);
+    } else {
+	readAndPrintInputAsBits(input);
+    }
+    return 0;
 }
