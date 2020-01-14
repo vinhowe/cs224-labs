@@ -12,8 +12,8 @@
  * argc: the number of items on the command line (and length of the
  *       argv array) including the executable
  * argv: the array of arguments as strings (char* array)
- * bits: the integer value is set to non-zero if bits output indicated
- *       outherwise zero for hex output
+ * bits: the integer value is set to TRUE if bits output indicated
+ *       outherwise FALSE for hex output
  *
  * returns the input file pointer (FILE*)
  **/
