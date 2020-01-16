@@ -142,7 +142,7 @@ The hex dump (2) is the actual byte values in the file starting at the indicated
 
 The hex dump section in the starter code is output by the function `void printDataAsHex(unsigned char* data, size_t size)`. The array `data` contains `size` number of bytes and `size` is never more than 16 but can be less than 16.
 
-The character representation (3) is exactly that. The ASCII character for each byte. Characters are encoded by ASCII that assigns each character an integer value in the range of `0` and `127` inclusive (see `man ascii`). Printable characters start at the space (decimal value `20`) and end at the tilde (decimal value 126). Any character that is not in the range of `20` and `126` inclusive in represented with a period (`.`). 
+The character representation (3) is exactly that. The ASCII character for each byte. Characters are encoded by ASCII that assigns each character an integer value in the range of `0` and `127` inclusive (see `man ascii`). Printable characters start at the space ( value `32`) and end at the tilde (decimal value `126`). Any character that is not in the range of `32` and `126` inclusive is represented with a period (`.`). 
 
 ```
 00000010: 7574 7075 7420 6d65 616e 3f0a            utput mean?.
