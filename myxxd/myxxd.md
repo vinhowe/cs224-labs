@@ -40,6 +40,18 @@ The TA's build the solution and test it against a set of input files by comparin
   * Exact match with `xxd -b` on all input files (10 points)
   * Style (20 points)
 
+# Getting the Starter Code
+
+Copying [myxxd.c](myxxd.c) in the browser or downloading the code in the browser is one way to get the code, but if the work is being done remotely with `ssh`, then the file is on the wrong machine. The `scp` tool can copy the file to the remote machine, but there is an easier solutions using `git`.
+
+The labs are in a `git` repository named [byu-cs-224-labs](https://bitbucket.org/byucs224/byu-cs-224-labs/src/master/). There is a button on the page named **Clone**, click that button, copy the command, and past it into the terminal. It will download the files directly to the remote machine. Here is the command to save time with following the link:
+
+```
+git clone git@bitbucket.org:byucs224/byu-cs-224-labs.git
+```
+
+`git` is not part of this course. It is just a convenient way to distribute files. Once the files exist on the machine, nothing else is done with git until the next lab, in which case the command `git pull` in the directory will get the new files or the repository can be cloned again in a different location.
+
 # Project Details
 
 Carefully reading the project details is likely to save hours in completing the lab. Take time to understand **what** needs to be done, then plan out **how** to get it done, and finally do it. Each of the sections below is intended to answer the **what** and **how** for this project.
