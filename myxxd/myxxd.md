@@ -74,7 +74,7 @@ $ ./myxxd
 
 ## Providing Input
 
-*Standard input* is equivalent to the input stream `cin` in the C++ language. The C language equivalent is `stdin` and is defined in `stdio.h` (e.g., `#include <stdio.h>`). As in C++, reading from `stdin` reads typed characters at the keyboard. Keyboard input is easy; run `xxd` and then then type as in below.
+*Standard input* is equivalent to the input stream `cin` in the C++ language. The C language equivalent is `stdin` and is defined in `stdio.h` (e.g., `#include <stdio.h>`). As in C++, reading from `stdin` reads typed characters at the keyboard. Keyboard input is easy; run `xxd` and then then type `Lab 0: myxxd` followed by the return. There should be stuff printed out on the return. Below is what all this looks like on the command line.
 
 ```
 $ xxd
