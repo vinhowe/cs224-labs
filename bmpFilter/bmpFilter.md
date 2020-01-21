@@ -36,7 +36,7 @@ Here is an example that uses pipes to generate the `xxd` dump of the filtered im
 
 Here in this example the pipes are used to first generate the `xxd` output from the `a.out` and then redirect that into the `diff` utility.
 
-The [bmpFilter.c](bmpFilter.c) files contains code to parse the cammand line options (`parseCommandLine`), read the entire file from `stdin` and store it into a `unsigned char*` array that is an exact byte-for-byte copy of the original file (`getBmpFileAsBytes`), call code to interpret the array and apply the appropriate filter (`parseHeaderAndApplyFilter`), and then write the entire array for the file to `stdout`.
+The [bmpFilter.c](bmpFilter.c) files contains code to parse the command line options (`parseCommandLine`), read the entire file from `stdin` and store it into a `unsigned char*` array that is an exact byte-for-byte copy of the original file (`getBmpFileAsBytes`), call code to interpret the array and apply the appropriate filter (`parseHeaderAndApplyFilter`), and then write the entire array for the file to `stdout`.
 
 The file includes additional structure to pattern good programing style. The entry point is `parseHeaderAndApplyFilter`. The parsing extracts from the header for the image the size of the image and where it is located in the array. The filter problem is then decomposed into these steps:
 
@@ -220,7 +220,7 @@ The code uses the pre-processor to conditionally include code. There is also thi
 #endif
 ```
 
-The code again uses the pre-processor to conditionally exclude code. In both cases, whether code is included or excluded depends on the presence of `DEBUG` being defined. `DEBUG` in defined at compile time with the command: `gcc -g -Wall -DDEBUG bmpFilter.c`. If is **not** defined with the normal compile command: `gcc -g -Wall bmpFilter.c`. 
+The code again uses the pre-processor to conditionally exclude code. In both cases, whether code is included or excluded depends on the presence of `DEBUG` being defined. `DEBUG` is defined at compile time with the command: `gcc -g -Wall -DDEBUG bmpFilter.c`. If is **not** defined with the normal compile command: `gcc -g -Wall bmpFilter.c`. 
 
 The pre-processor is being used to enable `printf` debugging. It turns **off** the `stdout` output of the `bmp` image file, and it turns **on** the `printf` statements. It makes it so that the `printf` statements are easy to see and are not cluttered with the binary image output.
 
