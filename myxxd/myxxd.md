@@ -13,8 +13,6 @@ The goal of this lab is to write a program that mimics some of the functionality
 
 The [myxxd.c](myxxd.c) file contains code to parse the command line options (`parseCommandLine`) and then call the appropriate output function for the hex dump (`readAndPrintInputAsHex`) or the bits dump (`readAndPrintInputAsBits`). The file also contains an implementation of `readAndPrintInputAsHex` to handle reading from `stdin` using the `fread` C library function. The implementation of `readAndPrintInputAsHex` calls two unimplemented functions `printDataAsHex` and `printDataAsChars` that produce the actual hex dump. Implementing these two functions is the starting point for the lab. Once these are implemented and tested, follow the same structure to implement `readAndPrintInputAsBits`: the function should be implemented using the same decomposition of the problem as in `readAndPrintInputAsHex` but differ in the number of bytes read at a time by `fread` and how those bytes are displayed in the output.  
 
-Upload the final [myxxd.c](myxxd.c) file to [Canvas](http://canvas.byu.edu) for submission. A correct solution exactly matches the output from `xxd` with and without the `-b` flag an any input to `stdin`.
-
 # Where to start?
 
   1. Read all of the write up and play with `xxd` and I/O redirection as you read about it.
@@ -27,7 +25,7 @@ Upload the final [myxxd.c](myxxd.c) file to [Canvas](http://canvas.byu.edu) for 
 
 # Submission
 
-Upload the completed [myxxd.c](myxxd.c) file containing the solution to [canvas](http://canvas.byu.edu) in the appropriate lab.
+Upload the final [myxxd.c](myxxd.c) file to [Canvas](http://canvas.byu.edu) for submission. A correct solution exactly matches the output from `xxd` with and without the `-b` flag an any input to `stdin`.
 
 # Rubric
 
