@@ -15,13 +15,14 @@ The [myxxd.c](myxxd.c) file contains code to parse the command line options (`pa
 
 # Where to start?
 
-  1. Read all of the write up and play with `xxd` and I/O redirection as you read about it.
-  2. Study the starter code in [myxxd.c](myxxd.c) and correlate it with the writeup.
-  3. Write a few simple test inputs to drive development (start small).
-  4. Implement `void printDataAsHex(unsigned char* data, size_t size)` and test it.
-  5. Implement `void printDataAsChars(unsigned char* data, size_t size)` and test it.
-  6. Test a few bigger inputs and use diff to compare the output.
-  7. Follow the pattern in `readAndPrintInputAsHex` to implement `void readAndPrintInputAsBits(FILE* input)`.
+  1. Read all of the writeup.
+  2. Play with `xxd` and I/O redirection as you read about them in the writeup.
+  3. Study the starter code in [myxxd.c](myxxd.c) and correlate it with the writeup.
+  4. Write a few simple test inputs to drive development (start small).
+  5. Implement `void printDataAsHex(unsigned char* data, size_t size)` and test it.
+  6. Implement `void printDataAsChars(unsigned char* data, size_t size)` and test it.
+  7. Test a few bigger inputs and use diff to compare the output.
+  8. Follow the pattern in `readAndPrintInputAsHex` to implement `void readAndPrintInputAsBits(FILE* input)`.
 
 # Submission
 
@@ -177,6 +178,35 @@ $ echo "What does this output mean?" | xxd -bits
 
 As before, padding is added to fill partially complete lines. Functionality for this section is to be implemented in the `void readAndPrintInputAsBits(FILE* input)` function following the pattern in its hex dump counterpart.
 
+## Printing Bits
+
+Implement the algorithm covered in class to convert an `unsigned char` to a string in bits. The pseudo-code is below and takes as input an `unsigned char` with name `x`.
+
+```c
+/* repeat 8 times */
+if (x % 2 == 1) {
+  /* store a 1 for the bit */
+} else {
+  /* store a 0 for the bit */
+}
+x = x / 2;
+```
+
+The algorithm generates the least significant bit first and the most significant bit last. Suppose that `x = 13`.
+
+```
+Iteration 0: x = 13 --> 1
+Iteration 1: x = 6  --> 0
+Iteration 2: x = 3  --> 1
+Iteration 3: x = 1  --> 1
+Iteration 4: x = 0  --> 0
+Iteration 5: x = 0  --> 0
+Iteration 6: x = 0  --> 0
+Iteration 7: x = 0  --> 0
+```
+
+The output string should be `00001101`. Iteration `0` generated the least significant bit `1`, and iteration `7` generated the most significant bit `0`.
+
 ## Checking Output
 
 There are two ways to check the output: visually and programatically. Visually comparing output is fine for small inputs but breakdowns for big (more complex) inputs. The `diff` is a programmatic solution in that it compares two files line by line and reports any differences (see `man diff`). Using `diff` though requires two files files to compare. 
@@ -185,7 +215,7 @@ There are two ways to check the output: visually and programatically. Visually c
 
 ```
 $ cat myxxd.c | xxd > xxd.txt
-$ cat myxxd.c | myxxd > myxxd.txt
+$ cat myxxd.c | ./myxxd > myxxd.txt
 $ diff myxxd.txt xxd.txt 
 ```
 
@@ -193,7 +223,7 @@ This same example can be accomplished with input stream redirect as below.
 
 ```
 $ xxd < myxxd.c > xxd.txt
-$ myxxd < myxxd.c > myxxd.txt
+$ ./myxxd < myxxd.c > myxxd.txt
 $ diff myxxd.txt xxd.txt 
 ```
 
