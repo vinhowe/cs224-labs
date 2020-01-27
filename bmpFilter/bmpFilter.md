@@ -14,8 +14,8 @@
 The goal of this lab is to write a program that reads a bitmap (`bmp`) file from standard in (`stdin`), apply a threshold or grayscale filter to that image, and then write the filtered image to standard out (`stdout`).  Here are two usage examples.
 
 ```
-$ a.out < ./images/orig-cheese.bmp > threshold-cheese.bmp
-$ a.out -g < ./images/ogig-cheese.bmp > grayscale-cheese.bmp
+$ ./a.out < ./images/orig-cheese.bmp > threshold-cheese.bmp
+$ ./a.out -g < ./images/ogig-cheese.bmp > grayscale-cheese.bmp
 ```
 
 The `<` character redirects the file `./images/orig-cheese.bmp` to standard input for `a.out` to read. The `>` characters redirects the standout output from `a.out` to the file `threshold-cheese.bmp`. The second example shows how to enable the grayscale filter with the `-g` flag.
@@ -23,7 +23,7 @@ The `<` character redirects the file `./images/orig-cheese.bmp` to standard inpu
 Here is an example that uses the stream redirection with a pipe to compare the output on the given filtered version.
 
 ```
-a.out -g < images/orig-horses.bmp | diff - images/grayscale-horses.bmp 
+./a.out -g < images/orig-horses.bmp | diff - images/grayscale-horses.bmp 
 ```
 
 The `-` character means that the first argument to `diff` comes from `stdin`. The `-` can be used for the left or right argument. 
@@ -31,7 +31,7 @@ The `-` character means that the first argument to `diff` comes from `stdin`. Th
 Here is an example that uses pipes to generate the `xxd` dump of the filtered image and then compare that to the given `xxd` dump for the correct image. This command is very helpful for debugging.
 
 ```
- a.out -g < images/orig-horses.bmp | xxd | diff - images/grayscale-horses.txt 
+./a.out -g < images/orig-horses.bmp | xxd | diff - images/grayscale-horses.txt 
 ```
 
 Here in this example the pipes are used to first generate the `xxd` output from the `a.out` and then redirect that into the `diff` utility.
@@ -82,6 +82,16 @@ Upload the final [bmpFilter.c](bmpFilter.c) file to [Canvas](http://canvas.byu.e
     * +2 for early submission
     * +10 for 50% scale down filter
     * Late day negative points
+
+# Getting the Starter Code
+
+The labs are in a `git` repository named [byu-cs-224-labs](https://bitbucket.org/byucs224/byu-cs-224-labs/src/master/). There is a button on the page named **Clone**, click that button, copy the command, and past it into the terminal. It will download the files directly to the remote machine. Here is the command to save time with following the link:
+
+```
+git clone https://bitbucket.org/byucs224/byu-cs-224-labs/src/master/
+```
+
+`git` is not part of this course. It is just a convenient way to distribute files. Once the files exist on the machine, nothing else is done with git until the next lab, in which case the command `git pull` in the directory will get the new files or the repository can be cloned again in a different location.
 
 # Bitmap Header
 
