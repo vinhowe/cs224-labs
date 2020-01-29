@@ -60,9 +60,16 @@ Notice that each function does one simple computation that is one part of what i
    3. The `height` of the image
    4. The start of the actual pixel array in the byte array (`pixelArray`)
  4. Write an equation that uses `width` to compute the padding that separates each row in the pixel array so that the numbers of bytes in each row is a multiple of 4
- 5. Write code top-down starting at `parseHeaderAndApplyFilter` or bottom-up starting at ``getAverageIntensity` -- it is a matter of personal preference
+ 5. Write code top-down starting at `parseHeaderAndApplyFilter` or bottom-up starting at ``getAverageIntensity` -- it is a matter of personal preference but a top down attack would be:
+    1. Iterate over each row in the pixel array (`void applyFilterToPixelArray(unsigned char* pixelArray, int width, int height, int isGrayscale)`)
+    2. Iterate over each pixel in a row (`void applyFilterToRow(unsigned char* row, int width, int isGrayscale)`)
+    3. Filter each pixel to update it in the pixel array (`void applyFilterToPixel(unsigned char* pixel, int isGrayscale)`)
+       1. `void applyThresholdToPixel(unsigned char* pixel)` or `void applyGrayscaleToPixel(unsigned char* pixel)`
+          1. `unsigned char getAverageIntensity(unsigned char blue, unsigned char green, unsigned char red)`
  6. Use the `-DDEBUG` compiler flag to test a function **before** starting the next function in the chain
  7. Use `diff`, `xxd`, and `gdb` the test and debug each file as needed
+
+**Important**: all the work is done *in place*. That means there is no copying of data, reading or writing from a file, or moving data into a data structure. The `bmpfileAsBytes` is an array of all the data; it is a complete copy of the file. The code should traverse and update that array. 
 
 # Submission
 
