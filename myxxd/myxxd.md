@@ -35,7 +35,7 @@ The TA's build the solution and test it against a set of input files by comparin
   * `void printDataAsHex(unsigned char* data, size_t size)` (40 points)
   * `void printDataAsChars(unsigned char* data, size_t size)` (40 points)
   * Exact match with `xxd` default behavior on all input files (10 points)
-  * `void readAndPrintInputAsBits(FILE* input)` (80)
+  * `void readAndPrintInputAsBits(FILE* input)` (80 points)
   * Exact match with `xxd -b` on all input files (10 points)
   * Style (20 points)
 
