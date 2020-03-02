@@ -408,6 +408,7 @@ void applyStageStepMode(int stepMode, char *stageID, int icode, int ifun, int rA
   printf("%s:\n", stageID);
   printf("icode:ifun = %01x:%01x  rA:rB = %01x:%01x  ", icode, ifun, rA, rB);
   printf("valC = 0x%016lx  valP = 0x%016lx\n", valC, valP);
+  printf("valA = 0x%016lx  valB = 0x%016lx\n", valA, valB);
   printf("valE = 0x%016lx  Cnd = %d\n", valE, Cnd);
   printf("valM = 0x%016lx\n", valM);
 
