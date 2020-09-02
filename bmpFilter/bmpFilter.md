@@ -112,7 +112,7 @@ Everything else that is in the header is not relevant to the lab and should be i
 
 The [file layout](fileLayout.png) shows the general structure of the BMP file. The [header](header.png) itself defines the offset to the start of the pixel array relative to the start of the file: *Offset For First Byte of the Pixel Array Data*. The [DIB Header](DIBHeader.png) contains the data needed to know the `width` (*Width of the Bitmap in Pixels*) and the `height` (*Height of the Bitmap in Pixels*).
 
-**Important**: use the diagrams in the links to compute the offset into the file for the data. See [bmp File Info](https://byu.instructure.com/courses/6883/pages/bmp-file-info) for more details if needed.
+**Important**: use the diagrams in the links to compute the offset into the file for the data. See [bmp File Info](bmp-file-info.pdf) for more details if needed.
 
 # Pixels and the Pixel Array
 
