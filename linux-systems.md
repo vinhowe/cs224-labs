@@ -72,7 +72,7 @@ where `user` should be replaced by your cs id / user name.  This will connect to
 It rarely matters exactly which machine you are connected to, and all CS machines have access to the same file system, so all of your files and folders will be exactly the same on any CS machine.
 You will be prompted to enter your CS account password. You will then be asked if you want to trust the certificate of the `schizo` machine (since this is your first time connecting).  You can type `Y` or `Yes` and then press enter. 
 
-If you have trouble with your CS account, look first at https://docs.cs.byu.edu/doku.php?id=setting-up-your-account-with-the-cs-authentication-system for help.  If that does not work, then submit a ticket via the ticket system at https://ticket.cs.byu.edu which is the primary support point for the open labs (preferred). The System Administrators may be contacted in person at 1148 TMCB or at system@cs.byu.edu if needed.
+If you have trouble with your CS account, look first at https://docs.cs.byu.edu/doku.php?id=setting-up-your-account-with-the-cs-authentication-system for help.  If that does not work, then submit a ticket via the ticket system at https://ticket.cs.byu.edu which is the primary support point for the open labs (preferred). The System Administrators may be contacted in person at 1140 TMCB or at system@cs.byu.edu if needed.
 
 Once authenticated, you will see a welcome message from the department machine and then another command prompt, which will display `user@machine:~$`, where `user` will be replaced by your cs user name and `machine` will be the name of the machine that you get connected to.
 
