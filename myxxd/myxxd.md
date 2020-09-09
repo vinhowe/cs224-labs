@@ -81,7 +81,7 @@ Lab 0: myxxd
 00000000: 4c61 6220 303a 206d 7978 7864 0a         Lab 0: myxxd.
 ```
 
-The program reads input until it is ended. To end the input hit return followed by `CTRL-d` (e.g., hold down the `control` key and while holding it type `d`). In some presentations `CTRL-d` is also indicated by `^d`. Both mean the same thing. A newline sometimes triggers output in many characters have been typed. The program is still reading input in that case and continues to read until the input is ended with `CTRL-d`.
+The program reads input until it is ended. To end the input hit return followed by `CTRL-d` (e.g., hold down the `control` key and while holding it type `d`). In some presentations `CTRL-d` is also indicated by `^d`. Both mean the same thing. A newline sometimes triggers output if many characters have been typed. The program is still reading input in that case and continues to read until the input is ended with `CTRL-d`.
 
 Typing input at the keyboard for developing and debugging a program is both tedious and time consuming. The command line in the shell provides a few basic tools to automate (and simplify) input to `stdin` in the form of *I/O redirection* and *Pipes*. I/O redirection effectively changes where input to `stdin` comes from and output from a program goes to (see **Checking Output** below). 
 
