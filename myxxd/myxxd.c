@@ -5,6 +5,7 @@
 #define TRUE 1
 #define FALSE 0
 #define BAD_NUMBER_ARGS 1
+int BYTES_PER_LINE = 16;
 
 /**
  * Parses the command line.
@@ -42,7 +43,17 @@ FILE *parseCommandLine(int argc, char **argv, int *bits) {
  * size: the size of the array
  **/
 void printDataAsHex(unsigned char *data, size_t size) {
-  printf("TODO 1: printDataAsHex (2)");
+  for (int i = 0; i < BYTES_PER_LINE; i++) {
+    if (i < BYTES_PER_LINE - 1 && !(i % 2)) {
+        printf(" ");
+    }
+
+    if (i < (int)size) {
+      printf("%02x", *(data + i));
+    } else {
+      printf("  ");
+    }
+  }
 }
 
 /**
