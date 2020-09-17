@@ -1,5 +1,7 @@
 # Debugging with GDB
 
+test
+
 The command line does provide a debugger for making sense of a misbehaving program. It is called `gdb`. It is invoke as follows.
 
 ```
