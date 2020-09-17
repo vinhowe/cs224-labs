@@ -54,7 +54,7 @@ void printDataAsHex(unsigned char *data, size_t size) {
  * size: the size of the array
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
-  printf("TODO 2: printDataAsChars (3)");
+  printf("%.*s", (int)size, data);
 }
 
 void readAndPrintInputAsHex(FILE *input) {
