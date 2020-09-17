@@ -5,7 +5,8 @@
 #define TRUE 1
 #define FALSE 0
 #define BAD_NUMBER_ARGS 1
-int BYTES_PER_LINE = 16;
+int BYTES_PER_LINE_HEX = 16;
+int BYTES_PER_LINE_BINARY = 6;
 
 /**
  * Parses the command line.
@@ -43,15 +44,15 @@ FILE *parseCommandLine(int argc, char **argv, int *bits) {
  * size: the size of the array
  **/
 void printDataAsHex(unsigned char *data, size_t size) {
-  for (int i = 0; i < BYTES_PER_LINE; i++) {
-    if (i < BYTES_PER_LINE - 1 && !(i % 2)) {
+  for (int i = 0; i < BYTES_PER_LINE_HEX; i++) {
+    if (i < BYTES_PER_LINE_HEX - 1 && !(i % 2)) {
         printf(" ");
     }
 
     if (i < (int)size) {
       printf("%02x", *(data + i));
     } else {
-      printf("  ");
+      printf("%*c", 2, ' ');
     }
   }
 }
@@ -66,7 +67,7 @@ void printDataAsHex(unsigned char *data, size_t size) {
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
   for (int i = 0; i < (int) size; i++) {
-    char currentChar = *(data + i);
+    unsigned char currentChar = *(data + i);
 
     if (currentChar > 126 || currentChar < 32) {
         currentChar = '.';
@@ -77,8 +78,8 @@ void printDataAsChars(unsigned char *data, size_t size) {
 }
 
 void readAndPrintInputAsHex(FILE *input) {
-  unsigned char data[16];
-  int numBytesRead = fread(data, 1, 16, input);
+  unsigned char data[BYTES_PER_LINE_HEX];
+  int numBytesRead = fread(data, 1, BYTES_PER_LINE_HEX, input);
   unsigned int offset = 0;
   while (numBytesRead != 0) {
     printf("%08x:", offset);
@@ -87,7 +88,36 @@ void readAndPrintInputAsHex(FILE *input) {
     printf("  ");
     printDataAsChars(data, numBytesRead);
     printf("\n");
-    numBytesRead = fread(data, 1, 16, input);
+    numBytesRead = fread(data, 1, BYTES_PER_LINE_HEX, input);
+  }
+}
+
+/**
+ * Writes data to stdout in binary.
+ *
+ * See myxxd.md for details.
+ *
+ * data: an array of no more than 6 characters
+ * size: the size of the array
+ **/
+void printDataAsBinary(unsigned char *data, size_t size) {
+  for (int i = 0; i < BYTES_PER_LINE_BINARY; i++) {
+    printf(" ");
+
+    if (i < (int)size) {
+      char byteString[8];
+      unsigned char currentChar = *(data + i);
+
+      for (int i = 7; i >= 0; i--) {
+        byteString[i] = currentChar % 2 == 1 ? '1' : '0';
+        currentChar /= 2;
+      }
+
+      printf("%s", byteString);
+    } else {
+      // 8 spaces where a byte would go
+      printf("%*c", 8, ' ');
+    }
   }
 }
 
@@ -99,7 +129,18 @@ void readAndPrintInputAsHex(FILE *input) {
  * input: input stream
  **/
 void readAndPrintInputAsBits(FILE *input) {
-  printf("TODO 3: readAndPrintInputAsBits\n");
+  unsigned char data[BYTES_PER_LINE_BINARY];
+  int numBytesRead = fread(data, 1, BYTES_PER_LINE_BINARY, input);
+  unsigned int offset = 0;
+  while (numBytesRead != 0) {
+    printf("%08x:", offset);
+    offset += numBytesRead;
+    printDataAsBinary(data, numBytesRead);
+    printf("  ");
+    printDataAsChars(data, numBytesRead);
+    printf("\n");
+    numBytesRead = fread(data, 1, BYTES_PER_LINE_BINARY, input);
+  }
 }
 
 int main(int argc, char **argv) {
