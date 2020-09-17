@@ -65,7 +65,15 @@ void printDataAsHex(unsigned char *data, size_t size) {
  * size: the size of the array
  **/
 void printDataAsChars(unsigned char *data, size_t size) {
-  printf("%.*s", (int)size, data);
+  for (int i = 0; i < (int) size; i++) {
+    char currentChar = *(data + i);
+
+    if (currentChar > 126 || currentChar < 32) {
+        currentChar = '.';
+    }
+
+    printf("%c", currentChar);
+  }
 }
 
 void readAndPrintInputAsHex(FILE *input) {
