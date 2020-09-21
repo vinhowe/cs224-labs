@@ -118,7 +118,7 @@ The [file layout](fileLayout.png) shows the general structure of the BMP file. T
 
 A pixel is a sequence of three bytes. The order of the bytes is  **blue**, **green**, and finally **red**. A `bmp` image has a `width` and a `height` measured from the bottom left corner of the image. The `width` is the number of pixels in each row of the image. The `height` is the number of rows in the image. 
 
-The pixel array stores the image in **row major order*. Row major order stores rows in order in the array. If the image has `width = 4` and `height = 3`, then below is an illustration of the pixel array where `i,j` in the `i`-th row and the `j`-th pixel in that row.
+The pixel array stores the image in **row major order*. Row major order stores rows in order in the array. If the image has `width = 4` and `height = 3`, then below is an illustration of the pixel array where `i,j` is the `i`-th row and the `j`-th pixel in that row.
 
 ```
 addresses --->
