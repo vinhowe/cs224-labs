@@ -27,7 +27,7 @@ FILE *parseCommandLine(int argc, char **argv, int *isGrayscale) {
     printf("Usage: %s [-g]\n", argv[0]);
     exit(BAD_NUMBER_ARGS);
   }
-  
+
   if (argc == 2 && strcmp(argv[1], "-g") == 0) {
     *isGrayscale = TRUE;
   } else {
@@ -91,10 +91,17 @@ void parseHeaderAndApplyFilter(unsigned char* bmpFileAsBytes, int isGrayscale) {
   int height = 0;
   unsigned char* pixelArray = NULL;
 
-  printf("TODO: set offsetFirstBytePixelArray\n");
-  printf("TODO: set width\n");
-  printf("TODO: set height\n");
-  printf("TODO: set the pixelArray to the start of the pixel array\n");
+  // printf("TODO: set offsetFirstBytePixelArray\n");
+  // printf("TODO: set width\n");
+  // printf("TODO: set height\n");
+  // printf("TODO: set the pixelArray to the start of the pixel array\n");
+
+  // Think about how this works. What we're doing here is treating bmpFileAsBytes as a pointer to an integer,
+  //  then getting that integer. It's 4 bytes, so the size of an integer.
+  offsetFirstBytePixelArray = *((int32_t *)(bmpFileAsBytes + 10));
+  width = *((int *)(bmpFileAsBytes + 18));
+  height = *((int *)(bmpFileAsBytes + 22));
+  pixelArray = bmpFileAsBytes + offsetFirstBytePixelArray;
 
 #ifdef DEBUG
   printf("offsetFirstBytePixelArray = %u\n", offsetFirstBytePixelArray);
