@@ -1,0 +1,9 @@
+nop
+irmovq $20, %rax
+irmovq $10, %rbx
+addq %rax, %rax
+subq %rbx, %rax
+andq %rax, %rax
+xorq %rax, %rax
+halt
+

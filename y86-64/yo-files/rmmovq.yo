@@ -1,0 +1,8 @@
+0x0000: 10                     | nop
+0x0001: 30f0f00b000000000000   | irmovq scratch, %rax
+0x000b: 2003                   | rrmovq %rax, %rbx
+0x000d: 40300800000000000000   | rmmovq %rbx, 0x8(%rax)
+0x0017: 00                     | halt
+                               | 
+0x0018:                        | .pos 0xbf0
+0x0bf0:                        | scratch:
